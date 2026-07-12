@@ -55,7 +55,7 @@ resource "azurerm_function_app_flex_consumption" "function_app_flex_consumptions
     health_check_path                 = each.value.site_config.health_check_path
     http2_enabled                     = each.value.site_config.http2_enabled
     dynamic "ip_restriction" {
-      for_each = each.value.site_config.ip_restriction != null ? [each.value.site_config.ip_restriction] : []
+      for_each = each.value.site_config.ip_restriction != null ? each.value.site_config.ip_restriction : []
       content {
         action      = ip_restriction.value.action
         description = ip_restriction.value.description
@@ -83,7 +83,7 @@ resource "azurerm_function_app_flex_consumption" "function_app_flex_consumptions
     remote_debugging_version         = each.value.site_config.remote_debugging_version
     runtime_scale_monitoring_enabled = each.value.site_config.runtime_scale_monitoring_enabled
     dynamic "scm_ip_restriction" {
-      for_each = each.value.site_config.scm_ip_restriction != null ? [each.value.site_config.scm_ip_restriction] : []
+      for_each = each.value.site_config.scm_ip_restriction != null ? each.value.site_config.scm_ip_restriction : []
       content {
         action      = scm_ip_restriction.value.action
         description = scm_ip_restriction.value.description
@@ -113,7 +113,7 @@ resource "azurerm_function_app_flex_consumption" "function_app_flex_consumptions
   }
 
   dynamic "always_ready" {
-    for_each = each.value.always_ready != null ? [each.value.always_ready] : []
+    for_each = each.value.always_ready != null ? each.value.always_ready : []
     content {
       instance_count = always_ready.value.instance_count
       name           = always_ready.value.name
@@ -224,7 +224,7 @@ resource "azurerm_function_app_flex_consumption" "function_app_flex_consumptions
       }
       config_file_path = auth_settings_v2.value.config_file_path
       dynamic "custom_oidc_v2" {
-        for_each = auth_settings_v2.value.custom_oidc_v2 != null ? [auth_settings_v2.value.custom_oidc_v2] : []
+        for_each = auth_settings_v2.value.custom_oidc_v2 != null ? auth_settings_v2.value.custom_oidc_v2 : []
         content {
           client_id                     = custom_oidc_v2.value.client_id
           name                          = custom_oidc_v2.value.name
@@ -302,7 +302,7 @@ resource "azurerm_function_app_flex_consumption" "function_app_flex_consumptions
   }
 
   dynamic "connection_string" {
-    for_each = each.value.connection_string != null ? [each.value.connection_string] : []
+    for_each = each.value.connection_string != null ? each.value.connection_string : []
     content {
       name  = connection_string.value.name
       type  = connection_string.value.type
