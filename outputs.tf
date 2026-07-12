@@ -1,3 +1,7 @@
+output "function_app_flex_consumptions_id" {
+  description = "Map of id values across all function_app_flex_consumptions, keyed the same as var.function_app_flex_consumptions"
+  value       = { for k, v in azurerm_function_app_flex_consumption.function_app_flex_consumptions : k => v.id }
+}
 output "function_app_flex_consumptions_always_ready" {
   description = "Map of always_ready values across all function_app_flex_consumptions, keyed the same as var.function_app_flex_consumptions"
   value       = { for k, v in azurerm_function_app_flex_consumption.function_app_flex_consumptions : k => v.always_ready }
