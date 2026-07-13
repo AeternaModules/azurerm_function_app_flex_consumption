@@ -226,82 +226,82 @@ EOT
     tags                                           = optional(map(string))
     storage_user_assigned_identity_id              = optional(string)
     storage_access_key                             = optional(string)
-    public_network_access_enabled                  = optional(bool)   # Default: true
-    maximum_instance_count                         = optional(number) # Default: 100
-    instance_memory_in_mb                          = optional(number) # Default: 2048
-    client_certificate_mode                        = optional(string) # Default: "Optional"
+    public_network_access_enabled                  = optional(bool)
+    maximum_instance_count                         = optional(number)
+    instance_memory_in_mb                          = optional(number)
+    client_certificate_mode                        = optional(string)
     http_concurrency                               = optional(number)
-    enabled                                        = optional(bool) # Default: true
-    webdeploy_publish_basic_authentication_enabled = optional(bool) # Default: true
+    enabled                                        = optional(bool)
+    webdeploy_publish_basic_authentication_enabled = optional(bool)
     client_certificate_exclusion_paths             = optional(string)
-    client_certificate_enabled                     = optional(bool) # Default: false
+    client_certificate_enabled                     = optional(bool)
     app_settings                                   = optional(map(string))
-    https_only                                     = optional(bool) # Default: false
+    https_only                                     = optional(bool)
     zip_deploy_file                                = optional(string)
     site_config = object({
       api_definition_url    = optional(string)
       api_management_api_id = optional(string)
       app_command_line      = optional(string)
       app_service_logs = optional(object({
-        disk_quota_mb         = optional(number) # Default: 35
+        disk_quota_mb         = optional(number)
         retention_period_days = optional(number)
       }))
       application_insights_connection_string        = optional(string)
       application_insights_key                      = optional(string)
       container_registry_managed_identity_client_id = optional(string)
-      container_registry_use_managed_identity       = optional(bool) # Default: false
+      container_registry_use_managed_identity       = optional(bool)
       cors = optional(object({
         allowed_origins     = optional(set(string))
-        support_credentials = optional(bool) # Default: false
+        support_credentials = optional(bool)
       }))
       default_documents                 = optional(list(string))
       elastic_instance_minimum          = optional(number)
       health_check_eviction_time_in_min = optional(number)
       health_check_path                 = optional(string)
-      http2_enabled                     = optional(bool) # Default: false
+      http2_enabled                     = optional(bool)
       ip_restriction = optional(list(object({
-        action      = optional(string) # Default: "Allow"
+        action      = optional(string)
         description = optional(string)
-        headers = optional(object({
+        headers = optional(list(object({
           x_azure_fdid      = optional(list(string))
           x_fd_health_probe = optional(list(string))
           x_forwarded_for   = optional(list(string))
           x_forwarded_host  = optional(list(string))
-        }))
+        })))
         ip_address                = optional(string)
         name                      = optional(string)
-        priority                  = optional(number) # Default: 65000
+        priority                  = optional(number)
         service_tag               = optional(string)
         virtual_network_subnet_id = optional(string)
       })))
-      ip_restriction_default_action    = optional(string) # Default: "Allow"
-      load_balancing_mode              = optional(string) # Default: "LeastRequests"
-      managed_pipeline_mode            = optional(string) # Default: "Integrated"
-      minimum_tls_version              = optional(string) # Default: "1.2"
-      remote_debugging_enabled         = optional(bool)   # Default: false
+      ip_restriction_default_action    = optional(string)
+      load_balancing_mode              = optional(string)
+      managed_pipeline_mode            = optional(string)
+      minimum_tls_version              = optional(string)
+      remote_debugging_enabled         = optional(bool)
       remote_debugging_version         = optional(string)
       runtime_scale_monitoring_enabled = optional(bool)
       scm_ip_restriction = optional(list(object({
-        action      = optional(string) # Default: "Allow"
+        action      = optional(string)
         description = optional(string)
-        headers = optional(object({
+        headers = optional(list(object({
           x_azure_fdid      = optional(list(string))
           x_fd_health_probe = optional(list(string))
           x_forwarded_for   = optional(list(string))
           x_forwarded_host  = optional(list(string))
-        }))
+        })))
         ip_address                = optional(string)
         name                      = optional(string)
-        priority                  = optional(number) # Default: 65000
+        priority                  = optional(number)
         service_tag               = optional(string)
         virtual_network_subnet_id = optional(string)
       })))
-      scm_ip_restriction_default_action = optional(string) # Default: "Allow"
-      scm_minimum_tls_version           = optional(string) # Default: "1.2"
-      scm_use_main_ip_restriction       = optional(bool)   # Default: false
-      use_32_bit_worker                 = optional(bool)   # Default: false
-      vnet_route_all_enabled            = optional(bool)   # Default: false
-      websockets_enabled                = optional(bool)   # Default: false
+      scm_ip_restriction_default_action = optional(string)
+      scm_minimum_tls_version           = optional(string)
+      scm_use_main_ip_restriction       = optional(bool)
+      use_32_bit_worker                 = optional(bool)
+      vnet_route_all_enabled            = optional(bool)
+      websockets_enabled                = optional(bool)
       worker_count                      = optional(number)
     })
     always_ready = optional(list(object({
@@ -345,8 +345,8 @@ EOT
         oauth_scopes               = optional(list(string))
       }))
       runtime_version               = optional(string)
-      token_refresh_extension_hours = optional(number) # Default: 72
-      token_store_enabled           = optional(bool)   # Default: false
+      token_refresh_extension_hours = optional(number)
+      token_store_enabled           = optional(bool)
       twitter = optional(object({
         consumer_key                 = string
         consumer_secret              = optional(string)
@@ -393,7 +393,7 @@ EOT
         graph_api_version       = optional(string)
         login_scopes            = optional(list(string))
       }))
-      forward_proxy_convention                = optional(string) # Default: "NoProxy"
+      forward_proxy_convention                = optional(string)
       forward_proxy_custom_host_header_name   = optional(string)
       forward_proxy_custom_scheme_header_name = optional(string)
       github_v2 = optional(object({
@@ -407,19 +407,19 @@ EOT
         client_secret_setting_name = string
         login_scopes               = optional(list(string))
       }))
-      http_route_api_prefix = optional(string) # Default: "/.auth"
+      http_route_api_prefix = optional(string)
       login = object({
         allowed_external_redirect_urls    = optional(list(string))
-        cookie_expiration_convention      = optional(string) # Default: "FixedTime"
-        cookie_expiration_time            = optional(string) # Default: "08:00:00"
+        cookie_expiration_convention      = optional(string)
+        cookie_expiration_time            = optional(string)
         logout_endpoint                   = optional(string)
-        nonce_expiration_time             = optional(string) # Default: "00:05:00"
-        preserve_url_fragments_for_logins = optional(bool)   # Default: false
-        token_refresh_extension_time      = optional(number) # Default: 72
-        token_store_enabled               = optional(bool)   # Default: false
+        nonce_expiration_time             = optional(string)
+        preserve_url_fragments_for_logins = optional(bool)
+        token_refresh_extension_time      = optional(number)
+        token_store_enabled               = optional(bool)
         token_store_path                  = optional(string)
         token_store_sas_setting_name      = optional(string)
-        validate_nonce                    = optional(bool) # Default: true
+        validate_nonce                    = optional(bool)
       })
       microsoft_v2 = optional(object({
         allowed_audiences          = optional(list(string))
@@ -428,13 +428,13 @@ EOT
         login_scopes               = optional(list(string))
       }))
       require_authentication = optional(bool)
-      require_https          = optional(bool)   # Default: true
-      runtime_version        = optional(string) # Default: "~1"
+      require_https          = optional(bool)
+      runtime_version        = optional(string)
       twitter_v2 = optional(object({
         consumer_key                 = string
         consumer_secret_setting_name = string
       }))
-      unauthenticated_action = optional(string) # Default: "RedirectToLoginPage"
+      unauthenticated_action = optional(string)
     }))
     connection_string = optional(list(object({
       name  = string
