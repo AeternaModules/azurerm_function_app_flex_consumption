@@ -12,12 +12,12 @@ output "function_app_flex_consumptions_app_settings" {
 }
 output "function_app_flex_consumptions_auth_settings" {
   description = "Map of auth_settings values across all function_app_flex_consumptions, keyed the same as var.function_app_flex_consumptions"
-  value       = { for k, v in azurerm_function_app_flex_consumption.function_app_flex_consumptions : k => v.auth_settings if v.auth_settings != null && length(v.auth_settings) > 0 }
+  value       = { for k, v in azurerm_function_app_flex_consumption.function_app_flex_consumptions : k => one(v.auth_settings) if v.auth_settings != null && length(v.auth_settings) > 0 }
   sensitive   = true
 }
 output "function_app_flex_consumptions_auth_settings_v2" {
   description = "Map of auth_settings_v2 values across all function_app_flex_consumptions, keyed the same as var.function_app_flex_consumptions"
-  value       = { for k, v in azurerm_function_app_flex_consumption.function_app_flex_consumptions : k => v.auth_settings_v2 if v.auth_settings_v2 != null && length(v.auth_settings_v2) > 0 }
+  value       = { for k, v in azurerm_function_app_flex_consumption.function_app_flex_consumptions : k => one(v.auth_settings_v2) if v.auth_settings_v2 != null && length(v.auth_settings_v2) > 0 }
 }
 output "function_app_flex_consumptions_client_certificate_enabled" {
   description = "Map of client_certificate_enabled values across all function_app_flex_consumptions, keyed the same as var.function_app_flex_consumptions"
@@ -63,7 +63,7 @@ output "function_app_flex_consumptions_https_only" {
 }
 output "function_app_flex_consumptions_identity" {
   description = "Map of identity values across all function_app_flex_consumptions, keyed the same as var.function_app_flex_consumptions"
-  value       = { for k, v in azurerm_function_app_flex_consumption.function_app_flex_consumptions : k => v.identity if v.identity != null && length(v.identity) > 0 }
+  value       = { for k, v in azurerm_function_app_flex_consumption.function_app_flex_consumptions : k => one(v.identity) if v.identity != null && length(v.identity) > 0 }
 }
 output "function_app_flex_consumptions_instance_memory_in_mb" {
   description = "Map of instance_memory_in_mb values across all function_app_flex_consumptions, keyed the same as var.function_app_flex_consumptions"
@@ -123,7 +123,7 @@ output "function_app_flex_consumptions_service_plan_id" {
 }
 output "function_app_flex_consumptions_site_config" {
   description = "Map of site_config values across all function_app_flex_consumptions, keyed the same as var.function_app_flex_consumptions"
-  value       = { for k, v in azurerm_function_app_flex_consumption.function_app_flex_consumptions : k => v.site_config if v.site_config != null && length(v.site_config) > 0 }
+  value       = { for k, v in azurerm_function_app_flex_consumption.function_app_flex_consumptions : k => one(v.site_config) if v.site_config != null && length(v.site_config) > 0 }
   sensitive   = true
 }
 output "function_app_flex_consumptions_site_credential" {
@@ -133,7 +133,7 @@ output "function_app_flex_consumptions_site_credential" {
 }
 output "function_app_flex_consumptions_sticky_settings" {
   description = "Map of sticky_settings values across all function_app_flex_consumptions, keyed the same as var.function_app_flex_consumptions"
-  value       = { for k, v in azurerm_function_app_flex_consumption.function_app_flex_consumptions : k => v.sticky_settings if v.sticky_settings != null && length(v.sticky_settings) > 0 }
+  value       = { for k, v in azurerm_function_app_flex_consumption.function_app_flex_consumptions : k => one(v.sticky_settings) if v.sticky_settings != null && length(v.sticky_settings) > 0 }
 }
 output "function_app_flex_consumptions_storage_access_key" {
   description = "Map of storage_access_key values across all function_app_flex_consumptions, keyed the same as var.function_app_flex_consumptions"
